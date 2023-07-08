@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_pomodoro/ui/DWidget.dart';
+import 'package:my_pomodoro/ui/TimerHandle.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -11,7 +12,10 @@ class Home extends StatelessWidget {
       drawer: const DWidget(),
       body: const Column(
         children: [
-          Text('home'),
+          SizedBox(height: 68),
+          TimerHandle(),
+          SizedBox(height: 100),
+          Text('tmp')
         ],
       ),
     );
