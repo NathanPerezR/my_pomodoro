@@ -15,9 +15,10 @@ class Home extends StatelessWidget {
           SizedBox(height: 68),
           TimerHandle(),
           SizedBox(height: 100),
-          Text('tmp')
+          Card(),
         ],
       ),
     );
+    
   }
 }
