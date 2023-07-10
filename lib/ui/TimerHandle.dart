@@ -28,57 +28,106 @@ class _TimerState extends State<TimerHandle> {
   // used used to keep track of seconds
   int currentTimeOnWatch = 1500;
   late Timer _timer;
-
-  // run on load
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
+  bool isRunning = false;
 
   //udpates the timer once per second, formats string
   void updateTimer() {
     currentTimeOnWatch -= 1;
   }
 
+  //starts timer
   void _startTimer() {
-    const oneSecond = Duration(seconds: 1);
-    _timer = Timer.periodic(oneSecond, (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         updateTimer();
       });
     });
+    isRunning = true;
   }
 
+  //stops the timer
+  void _stopTimer() {
+    _timer.cancel(); //TODO: document in obsidan
+    isRunning = false;
+  }
+
+  //TODO: edit style to match figma design
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          returnTimeString(currentTimeOnWatch),
-          style: const TextStyle(fontSize: 28.0, fontWeight: FontWeight.w900),
+        // circle with timer in the middle
+        Stack(
+          //all elements centered
+          alignment: Alignment.center,
+          children: [
+            Container(
+              width: 250.0,
+              height: 250.0,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.green,
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Colors.green,
+                    Colors.greenAccent,
+                    Colors.green,
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              width: 235.0,
+              height: 235.0,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.black,
+              ),
+            ),
+            Column(
+              children: [
+                Text(
+                  returnTimeString(currentTimeOnWatch),
+                  style: const TextStyle(
+                    fontSize: 50.0,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  'temp',
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ],
+            )
+          ],
         ),
-        const Text('TEMP', style: TextStyle(fontSize: 15.0)), //TODO: should update based on task
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //TODO: select better icons
             IconButton(
               icon: const Icon(Icons.play_arrow),
               iconSize: 55.0,
               onPressed: () {
-                setState(() {
-                  //TODO: stop start the timer
-                });
+                if (isRunning == false) {
+                  setState(() {
+                    _startTimer();
+                  });
+                }
               },
             ),
             IconButton(
               icon: const Icon(Icons.pause),
               iconSize: 55.0,
               onPressed: () {
-                setState(() {
-                  //TODO: stop the timer
-                });
+                if (isRunning == true) {
+                  setState(() {
+                    _stopTimer();
+                  });
+                }
               },
             ),
             IconButton(
@@ -86,7 +135,7 @@ class _TimerState extends State<TimerHandle> {
               iconSize: 55.0,
               onPressed: () {
                 setState(() {
-                  //TODO: stop the timer
+                  currentTimeOnWatch = 0;
                 });
               },
             ),
