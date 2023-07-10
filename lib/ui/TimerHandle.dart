@@ -10,6 +10,7 @@ class TimerHandle extends StatefulWidget {
 }
 
 class _TimerState extends State<TimerHandle> {
+  
   //returns a timer string, input seconds outputs "00:00"
   String returnTimeString(secondsOnWatch) {
     int minI = (secondsOnWatch / 60).truncate();
@@ -27,6 +28,7 @@ class _TimerState extends State<TimerHandle> {
   //TODO: remove dev statement 45 mins
   // used used to keep track of seconds
   int currentTimeOnWatch = 1500;
+  String taskString = 'TASK';
   late Timer _timer;
   bool isRunning = false;
 
@@ -47,11 +49,10 @@ class _TimerState extends State<TimerHandle> {
 
   //stops the timer
   void _stopTimer() {
-    _timer.cancel(); //TODO: document in obsidan
+    _timer.cancel();
     isRunning = false;
   }
 
-  //TODO: edit style to match figma design
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -66,24 +67,15 @@ class _TimerState extends State<TimerHandle> {
               height: 250.0,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.green,
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Colors.green,
-                    Colors.greenAccent,
-                    Colors.green,
-                  ],
-                ),
+                color: Colors.grey,
               ),
             ),
             Container(
-              width: 235.0,
-              height: 235.0,
+              width: 234.0,
+              height: 234.0,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             Column(
@@ -92,19 +84,19 @@ class _TimerState extends State<TimerHandle> {
                   returnTimeString(currentTimeOnWatch),
                   style: const TextStyle(
                     fontSize: 50.0,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    color: Colors.black,
                   ),
                 ),
                 Text(
-                  'temp',
-                  style: const TextStyle(color: Colors.white),
+                  taskString,
+                  style: const TextStyle(color: Colors.black),
                 ),
               ],
             )
           ],
         ),
-
+  
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

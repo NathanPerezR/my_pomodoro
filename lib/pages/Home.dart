@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_pomodoro/ui/DWidget.dart';
 import 'package:my_pomodoro/ui/TimerHandle.dart';
+import 'package:my_pomodoro/ui/ToDoListHandle.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -8,13 +9,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(backgroundColor: Colors.black),
       drawer: const DWidget(),
       body: const Column(
         children: [
-          SizedBox(height: 68),
+          SizedBox(height: 33),
           TimerHandle(),
-          SizedBox(height: 100),
+          SizedBox(height: 0),
+          ToDoListHandle(),
           Card(),
         ],
       ),
