@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
+int startTime = 1000;
+int currentTimeOnWatch = 1000;
+
 class TimerHandle extends StatefulWidget {
   const TimerHandle({Key? key}) : super(key: key);
 
@@ -12,12 +15,18 @@ class TimerHandle extends StatefulWidget {
 
 //custom painter for the timer circle, draws a circle with black arc
 class MyPainter extends CustomPainter {
+
+  //logic for the arc, returns the angle of the arc
+  arcLogic() {
+      return (currentTimeOnWatch / startTime) * (2*math.pi);
+  }
+
   @override
-void paint(Canvas canvas, Size size) {
+  void paint(Canvas canvas, Size size) {
   final rect = Rect.fromLTRB(0, 0, 250, 250);
-  final startAngle = -math.pi / 2;
-  final sweepAngle = math.pi;
-  final useCenter = false;
+  const startAngle = -(math.pi / 2);
+  final sweepAngle = arcLogic();
+  const useCenter = false;
   final paint = Paint()
     ..color = Colors.black
     ..style = PaintingStyle.stroke
@@ -30,7 +39,7 @@ void paint(Canvas canvas, Size size) {
     return true;
   }
 }
-
+//state class for timer
 class _TimerState extends State<TimerHandle> {
   
   //returns a timer string, input seconds outputs "00:00"
@@ -49,7 +58,6 @@ class _TimerState extends State<TimerHandle> {
 
   //TODO: remove dev statement 45 mins
   // used used to keep track of seconds
-  int currentTimeOnWatch = 1500;
   String taskString = 'TASK';
   late Timer _timer;
   bool isRunning = false;
