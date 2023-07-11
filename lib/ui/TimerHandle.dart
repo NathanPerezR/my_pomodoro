@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:math' as math;
 
 class TimerHandle extends StatefulWidget {
   const TimerHandle({Key? key}) : super(key: key);
@@ -7,6 +8,27 @@ class TimerHandle extends StatefulWidget {
   // create instance of state class
   @override
   _TimerState createState() => _TimerState();
+}
+
+//custom painter for the timer circle, draws a circle with black arc
+class MyPainter extends CustomPainter {
+  @override
+void paint(Canvas canvas, Size size) {
+  final rect = Rect.fromLTRB(0, 0, 250, 250);
+  final startAngle = -math.pi / 2;
+  final sweepAngle = math.pi;
+  final useCenter = false;
+  final paint = Paint()
+    ..color = Colors.black
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 8;
+  canvas.drawArc(rect, startAngle, sweepAngle, useCenter, paint);                               
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter old) {
+    return true;
+  }
 }
 
 class _TimerState extends State<TimerHandle> {
@@ -53,6 +75,7 @@ class _TimerState extends State<TimerHandle> {
     isRunning = false;
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,16 +86,16 @@ class _TimerState extends State<TimerHandle> {
           alignment: Alignment.center,
           children: [
             Container(
-              width: 250.0,
-              height: 250.0,
+              width: 255.0,
+              height: 255.0,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.grey,
               ),
             ),
             Container(
-              width: 234.0,
-              height: 234.0,
+              width: 245.0,
+              height: 245.0,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
@@ -93,7 +116,11 @@ class _TimerState extends State<TimerHandle> {
                   style: const TextStyle(color: Colors.black),
                 ),
               ],
-            )
+            ),
+            CustomPaint(
+              size: const Size(250, 250),
+              painter: MyPainter(),
+            ),
           ],
         ),
   
