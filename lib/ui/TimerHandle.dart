@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:math' as math;
 
-int startTime = 1000;
-int currentTimeOnWatch = 1000;
+int startTime = 500;
+int currentTimeOnWatch = 500;
 
 class TimerHandle extends StatefulWidget {
   const TimerHandle({Key? key}) : super(key: key);
