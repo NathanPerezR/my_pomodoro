@@ -28,7 +28,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/NathanPerezR/my_pomodoro">
-  </a>o</h3>
+  </a></h3>
 
   <p align="center">
     Simple pomodoro timer with a built in task list.

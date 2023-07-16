@@ -38,14 +38,14 @@ class _ToDoListHandleState extends State<ToDoListHandle> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).pop(); 
               },
               child: const Text('Cancel', style: TextStyle(color: Colors.black)),
             ),
             TextButton(
               onPressed: () {
                 addListItem(newTaskName);
-                Navigator.of(context).pop(); // Close the dialog
+                Navigator.of(context).pop(); 
               },
               child: const Text('Add', style: TextStyle(color: Colors.black)),
             ),
@@ -108,7 +108,7 @@ class _ToDoListHandleState extends State<ToDoListHandle> {
           bottom: 302,
           right: 24,
           child: FloatingActionButton(
-            onPressed: _showAddTaskDialog, // Call the dialog function
+            onPressed: _showAddTaskDialog,
             mini: true,
             backgroundColor: Colors.black,
             child: const Icon(Icons.add),
