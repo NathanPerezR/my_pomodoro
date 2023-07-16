@@ -159,8 +159,8 @@ class _TimerState extends State<TimerHandle> {
                   ),
                 ),
                 Text(
-                  task,
-                  style: const TextStyle(color: Colors.black),
+                  isBreak ? "BREAK" : "WORK",
+                  style: const TextStyle(color: Colors.grey),
                 ),
               ],
             ),
