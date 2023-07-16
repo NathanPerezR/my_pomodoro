@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_pomodoro/pages/Settings.dart';
-import '../pages/Friends.dart';
 import '../pages/Chart.dart';
 
 //returns Drawer to be used for Navigation in Home.dart
@@ -28,15 +27,6 @@ class DWidget extends StatelessWidget implements PreferredSizeWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => Chart()),
-              );
-            },
-          ),
-          ListTile(
-            title: const Text('Friends'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Friends()),
               );
             },
           ),
