@@ -65,8 +65,6 @@ My Pomodoro is a simple pomodoro timer with a built in task list for Windows.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-If you wish to use My Pomodoro.  You can install the last updated build [here](build\windows\runner\Release\my_pomodoro.exe).
-
 ### Prerequisites
 
 Ensure [Flutter SDK](https://docs.flutter.dev/get-started/install) is installed as per the linked instructions. Flutter 3.10.5+, Dart 3.0.5+ are both needed.
