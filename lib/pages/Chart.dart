@@ -7,7 +7,7 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Text("chart"),
+      body: const Text("Coming Soon"),
     );
   }
 }
