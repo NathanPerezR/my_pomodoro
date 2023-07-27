@@ -29,6 +29,7 @@
   <h3>My Pomodoro</h3>
 
   <p align="center">
+    <br />
     Simple pomodoro timer with a built in task list.
     <br />
     <br />
@@ -42,7 +43,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]
+<div align="center"
+
+![Product Name Screen Shot][product-screenshot]
+
+</div>
 
 My Pomodoro is a simple pomodoro timer with a built in task list for Windows.
 
