@@ -8,8 +8,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -21,19 +19,17 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues-shield]][issues-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
-
+[![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/NathanPerezR/my_pomodoro">
-  </a></h3>
+  </a>
+  <h3>My Pomodoro</h3>
 
   <p align="center">
     Simple pomodoro timer with a built in task list.
-    <br />
-    <a href="https://github.com/NathanPerezR/my_pomodoro"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/NathanPerezR/my_pomodoro/issues">Report Bug</a>
@@ -42,16 +38,15 @@
   </p>
 </div>
 
+
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]]
 
 My Pomodoro is a simple pomodoro timer with a built in task list for Windows.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -59,7 +54,6 @@ My Pomodoro is a simple pomodoro timer with a built in task list for Windows.
 * [![Flutter][flutter.dev]][Flutter-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -71,33 +65,33 @@ Ensure [Flutter SDK](https://docs.flutter.dev/get-started/install) is installed 
 ### Installation
 
 1. Clone the repo
+
    ```sh
    git clone https://github.com/NathanPerezR/my_pomodoro.git
    ```
+
 2. Install Flutter packages
+
    ```sh
    Flutter install
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Core timer and list functionality
-- [x] Settings page, allowing for full customizability 
-- [ ] locally stored data based insites
+* [x] Core timer and list functionality
+* [ ] theme support
+* [ ] custom timer durations 
+* [ ] settings page
+* [ ] locally stored data based insites
 
 See the [open issues](https://github.com/NathanPerezR/my_pomodoro/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -113,11 +107,7 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
