@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Themes.dart';
 
 class ToDoListHandle extends StatefulWidget {
   const ToDoListHandle({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class ToDoListHandle extends StatefulWidget {
 class _ToDoListHandleState extends State<ToDoListHandle> {
   final List<Map<String, String>> listOfColumns = [];
 
-  final TextStyle _textStyle =  const TextStyle(color: Colors.white);
+  final TextStyle _textStyle =  TextStyle(color: CommonThemes().defaultTheme.colorScheme.onSurfaceVariant);
 
   void addListItem(String taskName) {
     setState(() {
@@ -40,14 +41,14 @@ class _ToDoListHandleState extends State<ToDoListHandle> {
               onPressed: () {
                 Navigator.of(context).pop(); 
               },
-              child: const Text('Cancel', style: TextStyle(color: Colors.black)),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 addListItem(newTaskName);
                 Navigator.of(context).pop(); 
               },
-              child: const Text('Add', style: TextStyle(color: Colors.black)),
+              child: const Text('Add'),
             ),
           ],
         );
@@ -63,14 +64,12 @@ class _ToDoListHandleState extends State<ToDoListHandle> {
           height: 350,
           width: 300,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 0, 0, 0),
+            color: CommonThemes().defaultTheme.colorScheme.surface,
             borderRadius: BorderRadius.circular(20.0),
           ),
-          child: Theme(
-            data: Theme.of(context).copyWith(dividerColor: Colors.white),
             child: DataTable(
               columns: [
-                DataColumn(label: Text('Task Name', style: _textStyle)),
+                DataColumn(label: Text('ToDo List', style: _textStyle)),
                 DataColumn(label: Text('', style: _textStyle)),
               ],
               rows: listOfColumns
@@ -87,7 +86,7 @@ class _ToDoListHandleState extends State<ToDoListHandle> {
                           Container(
                             alignment: Alignment.centerRight,
                             child: IconButton(
-                              color: Colors.white,
+                              color: CommonThemes().defaultTheme.colorScheme.onSurfaceVariant,
                               icon: const Icon(Icons.remove),
                               onPressed: () {
                                 setState(() {
@@ -103,15 +102,15 @@ class _ToDoListHandleState extends State<ToDoListHandle> {
                   .toList(),
             ),
           ),
-        ),
+
         Positioned(
           bottom: 302,
           right: 24,
           child: FloatingActionButton(
             onPressed: _showAddTaskDialog,
             mini: true,
-            backgroundColor: Colors.black,
-            child: const Icon(Icons.add),
+            backgroundColor: CommonThemes().defaultTheme.colorScheme.surface,
+            child: Icon(Icons.add),
           ),
         ),
       ],

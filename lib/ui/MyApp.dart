@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_pomodoro/pages/Home.dart';
+import 'Themes.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -7,8 +8,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build (BuildContext context) {
-    return const MaterialApp(
-      home: Home()
+    return MaterialApp(
+      theme: CommonThemes().defaultTheme,
+      home: const Home()
     );
   }
 }

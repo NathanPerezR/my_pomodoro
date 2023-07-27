@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_pomodoro/pages/Settings.dart';
 import '../pages/Chart.dart';
+import 'Themes.dart';
 
 //returns Drawer to be used for Navigation in Home.dart
 class DWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -12,13 +13,13 @@ class DWidget extends StatelessWidget implements PreferredSizeWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          const SizedBox(
+          SizedBox(
             height: 64.0,
             child: DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.grey,
+                color: CommonThemes().defaultTheme.colorScheme.background,
               ),
-              child: Text('My Pomodoro'),
+              child: const Text('My Pomodoro'),
             ),
           ),
           ListTile(

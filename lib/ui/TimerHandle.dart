@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_pomodoro/ui/Themes.dart';
 import 'dart:async';
 import 'dart:math' as math;
+import 'Themes.dart';
+
 
 List<int> timerArray = [2700,300,1500,600];
 int timerArrayIndex = 0;
@@ -17,9 +20,9 @@ class TimerHandle extends StatefulWidget {
   _TimerState createState() => _TimerState();
 }
 
-//custom painter for the timer circle, draws a circle with black arc
-class MyPainter extends CustomPainter {
-  //logic for the arc, returns the angle of the arc
+// custom painter for the timer circle, draws a circle with black arc
+class CircleEverySecond extends CustomPainter {
+  // logic for the arc, returns the angle of the arc
   arcLogic() {
     return (currentTimeOnWatch / startTime) * (2 * math.pi);
   }
@@ -31,7 +34,7 @@ class MyPainter extends CustomPainter {
     final sweepAngle = arcLogic();
     const useCenter = false;
     final paint = Paint()
-      ..color = Colors.black
+      ..color = CommonThemes().defaultTheme.colorScheme.onTertiary
       ..style = PaintingStyle.stroke
       ..strokeWidth = 8;
     canvas.drawArc(rect, startAngle, sweepAngle, useCenter, paint);
@@ -43,9 +46,9 @@ class MyPainter extends CustomPainter {
   }
 }
 
-//state class for timer
+// state class for timer
 class _TimerState extends State<TimerHandle> {
-  //returns a timer string, input seconds outputs "00:00"
+  // returns a timer string, input seconds outputs "00:00"
   String returnTimeString(secondsOnWatch) {
     int minI = (secondsOnWatch / 60).truncate();
     int secI = secondsOnWatch - (60 * minI);
@@ -62,7 +65,7 @@ class _TimerState extends State<TimerHandle> {
   late Timer _timer;
   bool isRunning = false;
 
-  //udpates the timer once per second, formats string
+  // udpates the timer once per second, formats string
   void updateTimer() {
     switch (timerArrayIndex) {
       // first count down
@@ -92,7 +95,7 @@ class _TimerState extends State<TimerHandle> {
           isBreak = true;
         }
         break;
-      // first count up
+      // then count up
       case 3:
         currentTimeOnWatch += 1;
         if (currentTimeOnWatch == timerArray[3]) {
@@ -101,13 +104,13 @@ class _TimerState extends State<TimerHandle> {
           isBreak = false;
         }
         break;
-      //
+      // once done, res
       default:
         timerArrayIndex = 0;
     }
   }
 
-  //starts timer
+  // starts timer
   void _startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
@@ -117,7 +120,7 @@ class _TimerState extends State<TimerHandle> {
     isRunning = true;
   }
 
-  //stops the timer
+  // stops the timer
   void _stopTimer() {
     _timer.cancel();
     isRunning = false;
@@ -129,44 +132,44 @@ class _TimerState extends State<TimerHandle> {
       children: [
         // circle with timer in the middle
         Stack(
-          //all elements centered
+          // all elements centered
           alignment: Alignment.center,
           children: [
             Container(
               width: 255.0,
               height: 255.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.grey,
+                color: CommonThemes().defaultTheme.colorScheme.background,
               ),
             ),
             Container(
               width: 245.0,
               height: 245.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.white,
+                color: CommonThemes().defaultTheme.colorScheme.onBackground,
               ),
             ),
             Column(
               children: [
                 Text(
                   returnTimeString(currentTimeOnWatch),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 50.0,
                     fontWeight: FontWeight.w800,
-                    color: Colors.black,
+                    color: CommonThemes().defaultTheme.colorScheme.tertiary,
                   ),
                 ),
                 Text(
                   isBreak ? "BREAK" : "WORK",
-                  style: const TextStyle(color: Colors.grey),
+                  style: TextStyle(color: CommonThemes().defaultTheme.colorScheme.tertiary.withOpacity(.7)),
                 ),
               ],
             ),
             CustomPaint(
               size: const Size(250, 250),
-              painter: MyPainter(),
+              painter: CircleEverySecond(),
             ),
           ],
         ),
