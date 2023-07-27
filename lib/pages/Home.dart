@@ -9,8 +9,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black),
-      //drawer: const DWidget(),
+      appBar: AppBar(),
+      drawer: const DWidget(),
       body: const Column(
         children: [
           SizedBox(height: 33),
